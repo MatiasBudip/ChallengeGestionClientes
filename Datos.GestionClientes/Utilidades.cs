@@ -12,7 +12,7 @@ namespace Datos.GestionClientes
         {
             if (entorno)
             {
-                return "http://nanosystem-001-site2.htempurl.com/";
+                return "http://nanosystem-001-site3.htempurl.com/";
             }
             else
             {
@@ -22,8 +22,8 @@ namespace Datos.GestionClientes
 
         public static bool esProduccion()
         {
-            return false;
-            //return true;
+            //return false;
+            return true;
         }
     }
 }
