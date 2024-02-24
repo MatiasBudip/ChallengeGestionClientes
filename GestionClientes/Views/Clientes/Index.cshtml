@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Contratos.GestionClientes.Cliente>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<a asp-action="Create" class="btn btn-success mt-2">Crear nuevo Cliente</a>
+
+<h1 class="mt-5">Lista de Clientes</h1>
+
+<div class="mt-5 mb-3">
+    <input type="text" id="nombreCliente" style="height: 36px;margin-top: 0px;" />
+    <a href="#" class="btn btn-primary" style="margin-top: -5px;" onclick="buscarCliente()">Buscar</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Nombres)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.CUIT)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Domicilio)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.TelefonoCelular)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CUIT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Domicilio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelefonoCelular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-outline-primary">Editar</a>
+                        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-outline-dark">Detalles</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function buscarCliente() {
+        // Captura el valor del input
+        var nombreCliente = document.getElementById('nombreCliente').value;
+
+        // Redirecciona a la acción "ObtenerClientePorNombre" con el parámetro en la URL
+        window.location.href = '/Clientes/ObtenerClientePorNombre?nombre=' + nombreCliente;
+    }
+</script>
